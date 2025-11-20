@@ -1,0 +1,15 @@
+# Basic security headers and SPA-friendly redirects
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "SAMEORIGIN"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+
+# Redirect non-file paths to index if you later convert to an SPA
+# [[redirects]]
+# from = "/*"
+# to = "/index.html"
+# status = 200
