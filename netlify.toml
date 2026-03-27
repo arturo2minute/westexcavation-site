@@ -21,3 +21,10 @@ Pragma = "no-cache"
 # from = "/*"
 # to = "/index.html"
 # status = 200
+
+# Keep the apex domain canonical and redirect www to it once both domains are connected in Netlify.
+[[redirects]]
+from = "https://www.westexcavation.com/*"
+to = "https://westexcavation.com/:splat"
+status = 301
+force = true
