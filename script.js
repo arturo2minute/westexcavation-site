@@ -25,6 +25,9 @@ const siteContent = {
     src: "images/logo.PNG",
     alt: "West Excavation logo",
   },
+  favicon: {
+    src: "images/favicon.png",
+  },
   navLinks: [
     { href: "#media", label: "Projects" },
     { href: "#services", label: "Services" },
@@ -312,7 +315,7 @@ applyLinkContent("[data-site-email]", siteContent.email);
 applyLinkContent("[data-site-facebook]", siteContent.facebook);
 
 applyImageSource("[data-site-logo]", siteContent.logo);
-applyFaviconSource("[data-site-favicon]", siteContent.logo.src);
+applyFaviconSource("[data-site-favicon]", siteContent.favicon.src);
 
 renderNavLinks("[data-site-nav]", siteContent.navLinks);
 renderNavLinks("[data-site-footer-nav]", siteContent.navLinks);
