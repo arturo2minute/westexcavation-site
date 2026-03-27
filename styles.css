@@ -240,8 +240,6 @@ section[id] {
 }
 
 .hero-copy,
-.hero-panel,
-.media-card,
 .service-card,
 .testimonial-card,
 .process-card,
@@ -268,7 +266,6 @@ section[id] {
 
 .hero h1,
 .section-heading h2,
-.dark-band h2,
 .contact-copy h2 {
   margin: 0;
   font-family: "Barlow Condensed", sans-serif;
@@ -285,9 +282,7 @@ section[id] {
 .hero-lead,
 .section-heading p,
 .contact-copy p,
-.dark-band-copy p,
 .service-card p,
-.media-card p,
 .testimonial-card p,
 .process-card p,
 .site-footer p {
@@ -315,10 +310,8 @@ section[id] {
 }
 
 .hero-pills span,
-.panel-kicker,
 .service-index,
-.process-card span,
-.play-mark {
+.process-card span {
   font-family: "Barlow Condensed", sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -332,91 +325,17 @@ section[id] {
   font-size: 0.94rem;
 }
 
-.hero-panel {
-  display: grid;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(180deg, rgba(22, 19, 15, 0.96), rgba(58, 49, 39, 0.98));
-  color: var(--paper);
-  box-shadow: var(--shadow-strong);
-}
-
-.hero-panel-header {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.hero-panel strong,
-.dark-band h2,
 .contact-copy h2 {
   font-size: clamp(1.55rem, 3vw, 2.4rem);
 }
 
-.panel-kicker,
-.eyebrow-light {
-  color: var(--sand);
-}
-
-.checklist {
-  display: grid;
-  gap: 0.65rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.checklist li {
-  position: relative;
-  padding-left: 1.35rem;
-  color: rgba(246, 240, 230, 0.9);
-  font-size: 0.98rem;
-}
-
-.checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72rem;
-  width: 0.55rem;
-  height: 0.12rem;
-  background: var(--sand);
-}
-
-.trust-strip {
-  padding: 0 0 2.5rem;
-}
-
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
-}
-
-.trust-grid div {
-  padding: 1.1rem 1.2rem;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 253, 249, 0.7);
-  border: 1px solid var(--line);
-  display: grid;
-  gap: 0.2rem;
-}
-
-.trust-grid strong,
 .service-card h3,
-.media-card h3,
 .process-card h3 {
   display: block;
   margin-bottom: 0.35rem;
   font-size: 1.15rem;
   font-family: "Barlow Condensed", sans-serif;
   letter-spacing: 0.03em;
-}
-
-.trust-grid span {
-  color: var(--ink-soft);
-  font-size: 0.92rem;
 }
 
 .section-shell {
@@ -625,7 +544,6 @@ section[id] {
 }
 
 .service-grid,
-.media-grid,
 .testimonial-grid,
 .process-grid,
 .footer-layout {
@@ -658,22 +576,6 @@ section[id] {
 
 .media-section {
   position: relative;
-}
-
-.media-grid {
-  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
-}
-
-.media-card {
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 253, 249, 0.88);
-  position: relative;
-  overflow: hidden;
-}
-
-.feature-media {
-  grid-row: span 2;
 }
 
 .media-frame,
@@ -752,27 +654,6 @@ section[id] {
   height: 100%;
   object-fit: cover;
   border-radius: calc(var(--radius-lg) - 10px);
-}
-
-.dark-band {
-  background:
-    linear-gradient(130deg, rgba(22, 19, 15, 0.96), rgba(58, 49, 39, 0.98));
-  color: var(--paper);
-}
-
-.dark-band-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.9fr);
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.dark-band h2 {
-  max-width: 12ch;
-}
-
-.dark-band-copy p {
-  color: rgba(246, 240, 230, 0.8);
 }
 
 .testimonial-grid {
@@ -997,24 +878,17 @@ textarea {
 
 @media (max-width: 1100px) {
   .service-grid,
-  .trust-grid,
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .media-grid,
   .contact-layout,
-  .dark-band-layout,
   .project-card {
     grid-template-columns: 1fr;
   }
 
   .project-card {
     height: auto;
-  }
-
-  .feature-media {
-    grid-row: auto;
   }
 }
 
@@ -1068,7 +942,6 @@ textarea {
 
   .hero h1,
   .section-heading h2,
-  .dark-band h2,
   .contact-copy h2 {
     max-width: none;
   }
@@ -1079,7 +952,6 @@ textarea {
   .topbar-links,
   .form-row,
   .service-grid,
-  .trust-grid,
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
@@ -1090,7 +962,6 @@ textarea {
   }
 
   .hero-copy,
-  .hero-panel,
   .testimonial-card,
   .process-card,
   .form-surface,
