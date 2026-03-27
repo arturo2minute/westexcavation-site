@@ -1,6 +1,33 @@
 const navToggle = document.getElementById("navToggle");
 const siteNav = document.getElementById("siteNav");
 
+const siteContent = {
+  businessName: "West Excavation LLC",
+  serviceArea: "Serving Lane, Linn, and Benton County",
+  serviceAreaShort: "Lane, Linn, and Benton County",
+  license: "Licensed | Bonded | Insured | CCB#249966",
+  licenseShort: "CCB#249966",
+  phone: {
+    label: "(541) 801-5790",
+    href: "tel:+15418015790",
+  },
+  email: {
+    label: "Westexcavationor@gmail.com",
+    href: "mailto:Westexcavationor@gmail.com",
+  },
+  facebook: {
+    label: "Facebook",
+    href: "https://www.facebook.com/p/West-Excavation-LLC-61556452743096/",
+  },
+  navLinks: [
+    { href: "#media", label: "Projects" },
+    { href: "#services", label: "Services" },
+    { href: "#testimonials", label: "Testimonials" },
+    { href: "#process", label: "Process" },
+    { href: "#contact", label: "Contact" },
+  ],
+};
+
 // Keep project content centralized so future reordering or additions only happen here.
 const carouselContent = {
   projects: [
@@ -231,6 +258,40 @@ const renderProjectSlide = (project, index) => {
     </article>
   `;
 };
+
+const applyTextContent = (selector, value) => {
+  document.querySelectorAll(selector).forEach((element) => {
+    element.textContent = value;
+  });
+};
+
+const applyLinkContent = (selector, content) => {
+  document.querySelectorAll(selector).forEach((element) => {
+    element.textContent = content.label;
+    element.setAttribute("href", content.href);
+  });
+};
+
+const renderNavLinks = (selector, links) => {
+  document.querySelectorAll(selector).forEach((element) => {
+    element.innerHTML = links
+      .map((link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`)
+      .join("");
+  });
+};
+
+applyTextContent("[data-site-license]", siteContent.license);
+applyTextContent("[data-site-license-short]", siteContent.licenseShort);
+applyTextContent("[data-site-business-name]", siteContent.businessName);
+applyTextContent("[data-site-service-area]", siteContent.serviceArea);
+applyTextContent("[data-site-service-area-short]", siteContent.serviceAreaShort);
+
+applyLinkContent("[data-site-phone]", siteContent.phone);
+applyLinkContent("[data-site-email]", siteContent.email);
+applyLinkContent("[data-site-facebook]", siteContent.facebook);
+
+renderNavLinks("[data-site-nav]", siteContent.navLinks);
+renderNavLinks("[data-site-footer-nav]", siteContent.navLinks);
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
