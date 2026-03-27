@@ -8,6 +8,14 @@ Referrer-Policy = "strict-origin-when-cross-origin"
 Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 
+# Prevent cached thank-you pages after form submission.
+[[headers]]
+for = "/thanks.html"
+[headers.values]
+Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+Pragma = "no-cache"
+
+
 # Redirect non-file paths to index if you later convert to an SPA
 # [[redirects]]
 # from = "/*"
