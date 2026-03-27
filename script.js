@@ -1,6 +1,8 @@
 const navToggle = document.getElementById("navToggle");
 const siteNav = document.getElementById("siteNav");
 
+const assetVersion = "20260327a";
+
 const siteContent = {
   businessName: "West Excavation LLC",
   serviceArea: "Serving Lane, Linn, and Benton County",
@@ -18,6 +20,10 @@ const siteContent = {
   facebook: {
     label: "Facebook",
     href: "https://www.facebook.com/p/West-Excavation-LLC-61556452743096/",
+  },
+  logo: {
+    src: "images/logo.PNG",
+    alt: "West Excavation logo",
   },
   navLinks: [
     { href: "#media", label: "Projects" },
@@ -259,6 +265,8 @@ const renderProjectSlide = (project, index) => {
   `;
 };
 
+const withAssetVersion = (src) => `${src}?v=${assetVersion}`;
+
 const applyTextContent = (selector, value) => {
   document.querySelectorAll(selector).forEach((element) => {
     element.textContent = value;
@@ -280,6 +288,19 @@ const renderNavLinks = (selector, links) => {
   });
 };
 
+const applyImageSource = (selector, image) => {
+  document.querySelectorAll(selector).forEach((element) => {
+    element.setAttribute("src", withAssetVersion(image.src));
+    element.setAttribute("alt", image.alt);
+  });
+};
+
+const applyFaviconSource = (selector, src) => {
+  document.querySelectorAll(selector).forEach((element) => {
+    element.setAttribute("href", withAssetVersion(src));
+  });
+};
+
 applyTextContent("[data-site-license]", siteContent.license);
 applyTextContent("[data-site-license-short]", siteContent.licenseShort);
 applyTextContent("[data-site-business-name]", siteContent.businessName);
@@ -289,6 +310,9 @@ applyTextContent("[data-site-service-area-short]", siteContent.serviceAreaShort)
 applyLinkContent("[data-site-phone]", siteContent.phone);
 applyLinkContent("[data-site-email]", siteContent.email);
 applyLinkContent("[data-site-facebook]", siteContent.facebook);
+
+applyImageSource("[data-site-logo]", siteContent.logo);
+applyFaviconSource("[data-site-favicon]", siteContent.logo.src);
 
 renderNavLinks("[data-site-nav]", siteContent.navLinks);
 renderNavLinks("[data-site-footer-nav]", siteContent.navLinks);
