@@ -32,6 +32,7 @@ const siteContent = {
     { href: "#process", label: "Process" },
     { href: "#contact", label: "Contact" },
   ],
+  carouselAutoplayMs: 5000,
 };
 
 // Keep project content centralized so future reordering or additions only happen here.
@@ -243,13 +244,12 @@ const renderProjectSlide = (project, index) => {
     .map((chip) => `<span class="project-chip">${escapeHtml(chip)}</span>`)
     .join("");
   const activeClass = index === 0 ? " is-active" : "";
-  const hiddenAttribute = index === 0 ? "" : " hidden";
 
   return `
     <article
       class="project-slide${activeClass}"
       data-carousel-slide
-      aria-label="Project ${index + 1}: ${escapeHtml(project.title)}"${hiddenAttribute}
+      aria-label="Project ${index + 1}: ${escapeHtml(project.title)}"
     >
       <div class="project-card">
         <div class="project-visual">
@@ -379,6 +379,8 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   }
 
   const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+  let autoplayTimer = null;
+  let autoplayStopped = false;
 
   let activeIndex = Math.max(
     0,
@@ -389,7 +391,7 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     slides.forEach((slide, index) => {
       const isActive = index === activeIndex;
       slide.classList.toggle("is-active", isActive);
-      slide.hidden = !isActive;
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
     });
 
     dots.forEach((dot, index) => {
@@ -404,6 +406,24 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     renderSlide();
   };
 
+  const stopAutoplay = () => {
+    if (autoplayStopped) {
+      return;
+    }
+
+    autoplayStopped = true;
+    if (autoplayTimer) {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  };
+
+  if (carouselName === "projects" && slides.length > 1) {
+    autoplayTimer = window.setInterval(() => {
+      moveTo(activeIndex + 1);
+    }, siteContent.carouselAutoplayMs);
+  }
+
   prevButton?.addEventListener("click", () => moveTo(activeIndex - 1));
   nextButton?.addEventListener("click", () => moveTo(activeIndex + 1));
 
@@ -414,13 +434,20 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   viewport?.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
       event.preventDefault();
+      stopAutoplay();
       moveTo(activeIndex - 1);
     }
 
     if (event.key === "ArrowRight") {
       event.preventDefault();
+      stopAutoplay();
       moveTo(activeIndex + 1);
     }
+  });
+
+  [viewport, prevButton, nextButton, ...dots].forEach((element) => {
+    element?.addEventListener("pointerdown", stopAutoplay, { once: true });
+    element?.addEventListener("focusin", stopAutoplay, { once: true });
   });
 
   renderSlide();
