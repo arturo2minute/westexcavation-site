@@ -229,7 +229,7 @@ section[id] {
 
 .hero {
   position: relative;
-  padding: 4.8rem 0 3.2rem;
+  padding: 2.4rem 0 3.2rem;
 }
 
 .hero-layout {
@@ -251,7 +251,7 @@ section[id] {
 }
 
 .hero-copy {
-  padding: clamp(1.8rem, 4vw, 3.4rem);
+  padding: clamp(1.25rem, 2.6vw, 2rem);
   border-radius: var(--radius-lg);
   background:
     linear-gradient(160deg, rgba(255, 253, 249, 0.96), rgba(248, 240, 229, 0.9));
@@ -420,7 +420,7 @@ section[id] {
 }
 
 .section-shell {
-  padding: 2.8rem 0;
+  padding: 1.4rem 0;
 }
 
 .section-heading {
@@ -831,8 +831,7 @@ section[id] {
 .process-card {
   padding: 1.4rem;
   border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, rgba(255, 253, 249, 0.92), rgba(238, 224, 203, 0.82));
+  background: rgba(255, 253, 249, 0.94);
 }
 
 .process-card span {
@@ -1052,7 +1051,7 @@ textarea {
   }
 
   .hero {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
   }
 
   .carousel-toolbar,
