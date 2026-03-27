@@ -290,7 +290,8 @@
         </div>
 
         <div class="form-surface">
-          <form name="contact" netlify netlify-honeypot="bot-field" action="/thanks.html" hidden>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" hidden>
+            <input type="hidden" name="form-name" value="contact" />
             <input type="text" name="name" />
             <input type="email" name="email" />
             <input type="tel" name="phone" />
@@ -300,7 +301,7 @@
             <textarea name="message"></textarea>
           </form>
 
-          <form name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
             <input type="hidden" name="form-name" value="contact" />
 
             <p class="hidden-field">
@@ -363,6 +364,7 @@
 
             <button class="button button-dark submit-button" type="submit">Send Request</button>
           </form>
+          <a class="hidden-field" href="/thanks.html" aria-hidden="true" tabindex="-1">Success page</a>
         </div>
       </div>
     </section>
