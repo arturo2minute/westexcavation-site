@@ -232,19 +232,6 @@ section[id] {
   padding: 4.8rem 0 3.2rem;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 6% 0 auto;
-  width: min(28rem, 38vw);
-  height: min(28rem, 38vw);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(154, 116, 72, 0.24), rgba(154, 116, 72, 0));
-  filter: blur(12px);
-  pointer-events: none;
-}
-
 .hero-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -826,6 +813,11 @@ section[id] {
   margin-top: 1rem;
   color: var(--clay);
   font-weight: 700;
+}
+
+.reviews-link-wrap {
+  margin: 1.5rem 0 0;
+  text-align: center;
 }
 
 .process-section {
